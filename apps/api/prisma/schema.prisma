@@ -1,0 +1,76 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ReleaseStatus {
+  PENDING
+  BUILDING
+  ATTESTING
+  ANCHORED
+  FAILED
+}
+
+model Project {
+  id            String   @id @default(cuid())
+  slug          String   @unique
+  name          String
+  repoUrl       String
+  defaultBranch String   @default("main")
+  isArchived    Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  releases Release[]
+}
+
+model Release {
+  id          String       @id @default(cuid())
+  projectId   String
+  project     Project      @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  version     String
+  commitSha   String
+  artifactCid String?
+  sbomCid     String?
+  status      ReleaseStatus @default(PENDING)
+  error       String?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  attestations Attestation[]
+  jobs         JobRun[]
+}
+
+model Attestation {
+  id          String   @id @default(cuid())
+  releaseId   String
+  release     Release  @relation(fields: [releaseId], references: [id], onDelete: Cascade)
+  kind        String   // source|build|release|sbom
+  payloadJson Json
+  signature   String
+  signerKeyId String
+  createdAt   DateTime @default(now())
+}
+
+model JobRun {
+  id        String   @id @default(cuid())
+  releaseId String?
+  release   Release? @relation(fields: [releaseId], references: [id], onDelete: SetNull)
+  kind      String   // import|normalize|build|store|attest|anchor
+  status    String   // queued|active|completed|failed
+  message   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  address   String
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
