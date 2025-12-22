@@ -158,5 +158,5 @@ If you add additional security scripts under `scripts/security`, run:
 
 ## Security Contacts
 
-- `security@YOUR_DOMAIN` (replace)
+- `security@gitnut.org` (replace)
 - GitHub Security Advisories: preferred
