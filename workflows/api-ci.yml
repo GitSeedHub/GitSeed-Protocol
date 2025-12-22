@@ -1,0 +1,101 @@
+name: API
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - "apps/api/**"
+      - "apps/api/prisma/**"
+      - "packages/shared/**"
+      - ".github/workflows/api-ci.yml"
+  pull_request:
+    paths:
+      - "apps/api/**"
+      - "apps/api/prisma/**"
+      - "packages/shared/**"
+      - ".github/workflows/api-ci.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  NODE_VERSION: "20"
+  PNPM_VERSION: "9"
+
+jobs:
+  api:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: gitnut
+          POSTGRES_PASSWORD: gitnut
+          POSTGRES_DB: gitnut
+        ports: [ "5432:5432" ]
+        options: >-
+          --health-cmd "pg_isready -U gitnut"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 12
+
+      redis:
+        image: redis:7
+        ports: [ "6379:6379" ]
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 12
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Prisma generate
+        run: pnpm --filter @gitnut/api prisma:generate
+
+      - name: Prisma migrate
+        env:
+          DATABASE_URL: postgresql://gitnut:gitnut@localhost:5432/gitnut
+        run: pnpm --filter @gitnut/api prisma:migrate:deploy
+
+      - name: Build
+        run: pnpm --filter @gitnut/api build
+
+      - name: Test
+        env:
+          DATABASE_URL: postgresql://gitnut:gitnut@localhost:5432/gitnut
+          REDIS_URL: redis://localhost:6379
+          SESSION_SECRET: test-secret
+          PUBLIC_BASE_URL: http://localhost:3001
+          GITHUB_CLIENT_ID: test
+          GITHUB_CLIENT_SECRET: test
+        run: pnpm --filter @gitnut/api test
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-artifacts
+          path: |
+            apps/api/**/coverage/**
+            apps/api/**/test-results/**
+            apps/api/**/logs/**
+          if-no-files-found: ignore

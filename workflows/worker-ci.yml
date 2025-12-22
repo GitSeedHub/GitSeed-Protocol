@@ -1,0 +1,90 @@
+name: Worker
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - "apps/worker/**"
+      - "packages/shared/**"
+      - ".github/workflows/worker-ci.yml"
+  pull_request:
+    paths:
+      - "apps/worker/**"
+      - "packages/shared/**"
+      - ".github/workflows/worker-ci.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  NODE_VERSION: "20"
+  PNPM_VERSION: "9"
+
+jobs:
+  worker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: gitnut
+          POSTGRES_PASSWORD: gitnut
+          POSTGRES_DB: gitnut
+        ports: [ "5432:5432" ]
+        options: >-
+          --health-cmd "pg_isready -U gitnut"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 12
+
+      redis:
+        image: redis:7
+        ports: [ "6379:6379" ]
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 12
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm --filter @gitnut/shared... --filter @gitnut/worker... build
+
+      - name: Test
+        env:
+          DATABASE_URL: postgresql://gitnut:gitnut@localhost:5432/gitnut
+          REDIS_URL: redis://localhost:6379
+          GITNUT_STORAGE_DRIVER: local
+          GITNUT_STORAGE_LOCAL_DIR: /tmp/gitnut-storage
+          GITNUT_SANDBOX_ENABLED: "true"
+        run: pnpm --filter @gitnut/worker test
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: worker-artifacts
+          path: |
+            apps/worker/**/coverage/**
+            apps/worker/**/test-results/**
+            apps/worker/**/logs/**
+          if-no-files-found: ignore
