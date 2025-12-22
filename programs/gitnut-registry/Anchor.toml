@@ -1,0 +1,19 @@
+[features]
+seeds = true
+skip-lint = false
+
+[programs.localnet]
+gitnut_registry = "GiTNuTReg1stry11111111111111111111111111111"
+
+[programs.devnet]
+gitnut_registry = "GiTNuTReg1stry11111111111111111111111111111"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "Localnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "pnpm -s ts-node ./programs/gitnut-registry/tests/runner.ts"

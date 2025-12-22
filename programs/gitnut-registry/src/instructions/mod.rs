@@ -1,0 +1,9 @@
+pub mod initialize;
+pub mod register_project;
+pub mod publish_version;
+pub mod set_maintainers;
+pub mod set_policy;
+pub mod verify_attestation;
+pub mod deprecate_version;
+pub mod transfer_project;
+pub mod close_project;
