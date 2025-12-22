@@ -1,0 +1,461 @@
+gitnut/
+├─ README.md
+├─ LICENSE
+├─ NOTICE
+├─ SECURITY.md
+├─ CODE_OF_CONDUCT.md
+├─ CONTRIBUTING.md
+├─ GOVERNANCE.md
+├─ SUPPORT.md
+├─ CHANGELOG.md
+├─ ROADMAP.md
+├─ DISCLAIMER.md
+├─ .env.example
+├─ .env.localnet.example
+├─ .env.docker.example
+├─ .env.k8s.example
+├─ .gitignore
+├─ .gitattributes
+├─ .editorconfig
+├─ .npmrc
+├─ .dockerignore
+├─ .tool-versions
+├─ package.json
+├─ pnpm-lock.yaml
+├─ pnpm-workspace.yaml
+├─ turbo.json
+├─ tsconfig.base.json
+├─ eslint.config.js
+├─ prettier.config.cjs
+├─ commitlint.config.cjs
+├─ lint-staged.config.cjs
+├─ vitest.workspace.ts
+├─ Makefile
+├─ .github/
+│  ├─ workflows/
+│  │  ├─ ci.yml
+│  │  ├─ contract-ci.yml
+│  │  ├─ sdk-ci.yml
+│  │  ├─ worker-ci.yml
+│  │  ├─ api-ci.yml
+│  │  ├─ web-ci.yml
+│  │  ├─ e2e.yml
+│  │  ├─ security-scan.yml
+│  │  ├─ dependency-review.yml
+│  │  ├─ sbom.yml
+│  │  ├─ release.yml
+│  │  ├─ docker-publish.yml
+│  │  └─ docs-deploy.yml
+│  ├─ ISSUE_TEMPLATE/
+│  │  ├─ bug_report.md
+│  │  ├─ feature_request.md
+│  │  ├─ security_report.md
+│  │  └─ config.yml
+│  └─ PULL_REQUEST_TEMPLATE.md
+│
+├─ docs/
+│  ├─ index.md
+│  ├─ overview.md
+│  ├─ architecture.md
+│  ├─ terminology.md
+│  ├─ process.md
+│  ├─ features.md
+│  ├─ threat-model.md
+│  ├─ trust-assumptions.md
+│  ├─ licensing.md
+│  ├─ storage.md
+│  ├─ reproducible-builds.md
+│  ├─ attestations.md
+│  ├─ policy.md
+│  ├─ api.md
+│  ├─ cli.md
+│  ├─ sdk.md
+│  ├─ registry-program.md
+│  ├─ localnet.md
+│  ├─ deployment/
+│  │  ├─ self-hosted.md
+│  │  ├─ docker-compose.md
+│  │  ├─ kubernetes.md
+│  │  ├─ helm.md
+│  │  ├─ vercel.md
+│  │  ├─ fly-io.md
+│  │  ├─ cloudflare.md
+│  │  └─ hardening.md
+│  ├─ ops/
+│  │  ├─ runbooks.md
+│  │  ├─ incident-response.md
+│  │  ├─ backups.md
+│  │  ├─ key-rotation.md
+│  │  ├─ migrations.md
+│  │  └─ monitoring.md
+│  └─ troubleshooting.md
+│
+├─ apps/
+│  ├─ web/                         # Next.js App Router
+│  │  ├─ README.md
+│  │  ├─ package.json
+│  │  ├─ next.config.mjs
+│  │  ├─ postcss.config.cjs
+│  │  ├─ tailwind.config.ts
+│  │  ├─ public/
+│  │  │  ├─ logos/
+│  │  │  └─ og/
+│  │  └─ src/
+│  │     ├─ app/
+│  │     │  ├─ layout.tsx
+│  │     │  ├─ page.tsx
+│  │     │  ├─ projects/
+│  │     │  ├─ releases/
+│  │     │  ├─ verify/
+│  │     │  ├─ docs/
+│  │     │  └─ api/                # Next route handlers (optional)
+│  │     ├─ components/
+│  │     ├─ features/
+│  │     │  ├─ project/
+│  │     │  ├─ release/
+│  │     │  ├─ attest/
+│  │     │  └─ search/
+│  │     ├─ hooks/
+│  │     ├─ lib/
+│  │     │  ├─ api-client.ts
+│  │     │  ├─ solana.ts
+│  │     │  ├─ format.ts
+│  │     │  └─ telemetry.ts
+│  │     ├─ styles/
+│  │     └─ types/
+│  │
+│  ├─ api/                         # REST/JSON API (Fastify/Nest/Express - interchangeable)
+│  │  ├─ README.md
+│  │  ├─ package.json
+│  │  ├─ tsconfig.json
+│  │  ├─ prisma/
+│  │  │  ├─ schema.prisma
+│  │  │  ├─ migrations/
+│  │  │  └─ seed.ts
+│  │  └─ src/
+│  │     ├─ main.ts
+│  │     ├─ config/
+│  │     │  ├─ env.ts
+│  │     │  ├─ logger.ts
+│  │     │  └─ rate-limit.ts
+│  │     ├─ routes/
+│  │     │  ├─ health.ts
+│  │     │  ├─ auth.ts
+│  │     │  ├─ projects.ts
+│  │     │  ├─ releases.ts
+│  │     │  ├─ attestations.ts
+│  │     │  ├─ jobs.ts
+│  │     │  └─ webhooks.ts
+│  │     ├─ controllers/
+│  │     ├─ services/
+│  │     │  ├─ project.service.ts
+│  │     │  ├─ release.service.ts
+│  │     │  ├─ verification.service.ts
+│  │     │  ├─ solana-indexer.service.ts
+│  │     │  └─ github.service.ts
+│  │     ├─ auth/
+│  │     │  ├─ github-oauth.ts
+│  │     │  ├─ wallet-signin.ts
+│  │     │  ├─ sessions.ts
+│  │     │  └─ permissions.ts
+│  │     ├─ db/
+│  │     ├─ queue/
+│  │     │  ├─ queue.ts            # bullmq / pg-boss / asynq (swappable)
+│  │     │  ├─ producers.ts
+│  │     │  └─ consumers.ts
+│  │     ├─ middleware/
+│  │     ├─ validators/
+│  │     ├─ errors/
+│  │     ├─ observability/
+│  │     │  ├─ metrics.ts
+│  │     │  ├─ tracing.ts
+│  │     │  └─ logging.ts
+│  │     └─ types/
+│  │
+│  ├─ worker/                      # Core pipeline: Import → Normalize → Build → Store → Anchor
+│  │  ├─ README.md
+│  │  ├─ package.json
+│  │  ├─ tsconfig.json
+│  │  ├─ docker/
+│  │  │  ├─ Dockerfile.worker
+│  │  │  ├─ Dockerfile.builder-node
+│  │  │  ├─ Dockerfile.builder-rust
+│  │  │  ├─ Dockerfile.builder-python
+│  │  │  ├─ seccomp/
+│  │  │  └─ profiles/
+│  │  └─ src/
+│  │     ├─ index.ts
+│  │     ├─ bootstrap.ts
+│  │     ├─ jobs/
+│  │     │  ├─ import.job.ts
+│  │     │  ├─ normalize.job.ts
+│  │     │  ├─ build.job.ts
+│  │     │  ├─ store.job.ts
+│  │     │  ├─ attest.job.ts
+│  │     │  ├─ anchor.job.ts
+│  │     │  └─ cleanup.job.ts
+│  │     ├─ pipeline/
+│  │     │  ├─ pipeline.ts
+│  │     │  ├─ state-machine.ts
+│  │     │  └─ idempotency.ts
+│  │     ├─ git/
+│  │     │  ├─ clone.ts
+│  │     │  ├─ shallow.ts
+│  │     │  ├─ archive.ts
+│  │     │  └─ verify-remote.ts
+│  │     ├─ normalize/
+│  │     │  ├─ detect-stack.ts
+│  │     │  ├─ license.ts
+│  │     │  ├─ manifests/
+│  │     │  │  ├─ node.ts
+│  │     │  │  ├─ python.ts
+│  │     │  │  ├─ rust.ts
+│  │     │  │  └─ static.ts
+│  │     │  └─ gitnut-manifest.ts  # Generates gitnut.json / gitnut.toml
+│  │     ├─ builders/
+│  │     │  ├─ interfaces.ts
+│  │     │  ├─ node.builder.ts
+│  │     │  ├─ rust.builder.ts
+│  │     │  ├─ python.builder.ts
+│  │     │  ├─ static.builder.ts
+│  │     │  └─ sandbox/
+│  │     │     ├─ runner.ts
+│  │     │     ├─ limits.ts
+│  │     │     ├─ filesystem.ts
+│  │     │     └─ network.ts
+│  │     ├─ storage/
+│  │     │  ├─ interfaces.ts
+│  │     │  ├─ arweave.ts
+│  │     │  ├─ s3.ts
+│  │     │  ├─ r2.ts
+│  │     │  └─ local.ts
+│  │     ├─ attestation/
+│  │     │  ├─ schemas.ts
+│  │     │  ├─ canonicalize.ts
+│  │     │  ├─ sign.ts
+│  │     │  ├─ verify.ts
+│  │     │  └─ sbom.ts
+│  │     ├─ solana/
+│  │     │  ├─ connection.ts
+│  │     │  ├─ pda.ts
+│  │     │  ├─ tx.ts
+│  │     │  ├─ registry.client.ts
+│  │     │  └─ retry.ts
+│  │     ├─ policy/
+│  │     │  ├─ allowlist.ts
+│  │     │  ├─ license-policy.ts
+│  │     │  ├─ content-policy.ts
+│  │     │  └─ limits.ts
+│  │     ├─ cache/
+│  │     ├─ telemetry/
+│  │     └─ types/
+│  │
+│  ├─ cli/
+│  │  ├─ README.md
+│  │  ├─ package.json
+│  │  ├─ tsconfig.json
+│  │  └─ src/
+│  │     ├─ index.ts
+│  │     ├─ commands/
+│  │     │  ├─ init.ts
+│  │     │  ├─ import.ts
+│  │     │  ├─ normalize.ts
+│  │     │  ├─ build.ts
+│  │     │  ├─ store.ts
+│  │     │  ├─ attest.ts
+│  │     │  ├─ anchor.ts
+│  │     │  ├─ publish.ts
+│  │     │  ├─ verify.ts
+│  │     │  └─ doctor.ts
+│  │     ├─ config/
+│  │     ├─ output/
+│  │     ├─ api/
+│  │     ├─ solana/
+│  │     └─ utils/
+│  │
+│  └─ indexer/                     # Optional: on-chain event indexer (strongly recommended)
+│     ├─ README.md
+│     ├─ package.json
+│     └─ src/
+│        ├─ main.ts
+│        ├─ subscriber.ts          # websocket logs / geyser (optional)
+│        ├─ processors/
+│        ├─ checkpoints/
+│        └─ db/
+│
+├─ programs/
+│  └─ gitnut-registry/
+│     ├─ README.md
+│     ├─ Anchor.toml
+│     ├─ Cargo.toml
+│     ├─ Xargo.toml
+│     ├─ src/
+│     │  ├─ lib.rs
+│     │  ├─ constants.rs
+│     │  ├─ errors.rs
+│     │  ├─ events.rs
+│     │  ├─ state/
+│     │  │  ├─ mod.rs
+│     │  │  ├─ registry.rs         # global config
+│     │  │  ├─ project.rs
+│     │  │  ├─ version.rs
+│     │  │  ├─ maintainer.rs
+│     │  │  └─ policy.rs
+│     │  └─ instructions/
+│     │     ├─ mod.rs
+│     │     ├─ initialize.rs
+│     │     ├─ register_project.rs
+│     │     ├─ publish_version.rs
+│     │     ├─ set_maintainers.rs
+│     │     ├─ set_policy.rs
+│     │     ├─ verify_attestation.rs
+│     │     ├─ deprecate_version.rs
+│     │     ├─ transfer_project.rs
+│     │     └─ close_project.rs
+│     ├─ idl/
+│     │  ├─ gitnut_registry.json
+│     │  └─ gitnut_registry.ts
+│     └─ tests/
+│        ├─ anchor.spec.ts
+│        ├─ registry.spec.ts
+│        ├─ policy.spec.ts
+│        ├─ access-control.spec.ts
+│        └─ fixtures/
+│
+├─ packages/
+│  ├─ sdk/                         # For third-party integrations
+│  │  ├─ README.md
+│  │  ├─ package.json
+│  │  ├─ tsconfig.json
+│  │  └─ src/
+│  │     ├─ index.ts
+│  │     ├─ client/
+│  │     ├─ pda/
+│  │     ├─ instructions/
+│  │     ├─ parsers/
+│  │     ├─ constants/
+│  │     ├─ types/
+│  │     └─ utils/
+│  │
+│  ├─ shared/
+│  │  ├─ README.md
+│  │  ├─ package.json
+│  │  └─ src/
+│  │     ├─ crypto/
+│  │     ├─ canonical-json/
+│  │     ├─ hashes/
+│  │     ├─ zod/
+│  │     ├─ http/
+│  │     ├─ errors/
+│  │     └─ types/
+│  │
+│  ├─ ui/
+│  │  ├─ README.md
+│  │  ├─ package.json
+│  │  └─ src/
+│  │     ├─ components/
+│  │     ├─ icons/
+│  │     └─ utils/
+│  │
+│  └─ config/
+│     ├─ README.md
+│     ├─ eslint/
+│     ├─ tsconfig/
+│     └─ prettier/
+│
+├─ schemas/
+│  ├─ gitnut-manifest.schema.json  # gitnut.json specification
+│  ├─ project-metadata.schema.json
+│  ├─ release-metadata.schema.json
+│  ├─ attestation/
+│  │  ├─ source-attestation.v1.json
+│  │  ├─ build-attestation.v1.json
+│  │  ├─ release-attestation.v1.json
+│  │  └─ sbom-attestation.v1.json
+│  └─ policy/
+│     ├─ license-policy.schema.json
+│     └─ content-policy.schema.json
+│
+├─ configs/
+│  ├─ localnet/
+│  │  ├─ solana-validator.sh
+│  │  ├─ airdrop.sh
+│  │  └─ deploy-programs.sh
+│  ├─ nginx/
+│  └─ grafana/
+│
+├─ infra/
+│  ├─ docker/
+│  │  ├─ docker-compose.yml
+│  │  ├─ postgres/
+│  │  ├─ redis/
+│  │  ├─ minio/                    # Local S3-compatible storage
+│  │  ├─ otel-collector/
+│  │  ├─ prom/
+│  │  └─ grafana/
+│  ├─ kubernetes/
+│  │  ├─ base/
+│  │  │  ├─ api.yaml
+│  │  │  ├─ worker.yaml
+│  │  │  ├─ web.yaml
+│  │  │  ├─ indexer.yaml
+│  │  │  ├─ postgres.yaml
+│  │  │  ├─ redis.yaml
+│  │  │  └─ ingress.yaml
+│  │  └─ overlays/
+│  │     ├─ local/
+│  │     ├─ staging/
+│  │     └─ prod/
+│  ├─ helm/
+│  │  ├─ Chart.yaml
+│  │  ├─ values.yaml
+│  │  └─ templates/
+│  ├─ terraform/
+│  │  ├─ aws/
+│  │  ├─ gcp/
+│  │  └─ cloudflare/
+│  └─ scripts/
+│     ├─ dev-up.sh
+│     ├─ dev-down.sh
+│     ├─ migrate.sh
+│     ├─ seed.sh
+│     ├─ smoke.sh
+│     └─ backup.sh
+│
+├─ deployments/
+│  ├─ vercel/                      # Deployment template for the web app
+│  ├─ fly/                         # Deployment templates for api/worker/indexer
+│  └─ systemd/                     # Self-hosted service templates
+│
+├─ scripts/
+│  ├─ bootstrap.ts
+│  ├─ generate-idl.ts
+│  ├─ publish-sdk.ts
+│  ├─ localnet.ts
+│  ├─ deploy-localnet.ts
+│  ├─ keygen.ts                    # Generates attestation signer keys (optional)
+│  ├─ fixtures.ts
+│  └─ bench.ts
+│
+├─ test/
+│  ├─ unit/
+│  ├─ integration/
+│  ├─ e2e/
+│  ├─ performance/
+│  └─ fixtures/
+│
+├─ examples/
+│  ├─ minimal-static-site/
+│  ├─ node-service/
+│  ├─ python-tool/
+│  ├─ rust-cli/
+│  └─ monorepo/
+│
+├─ audits/
+│  ├─ README.md
+│  ├─ internal/
+│  └─ third-party/
+│
+└─ .devcontainer/
+   ├─ devcontainer.json
+   └─ Dockerfile
