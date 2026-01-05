@@ -3,10 +3,10 @@
 # GitNut
 
 [![Website](https://img.shields.io/badge/Website-gitnut.org-14F195?style=for-the-badge&logo=vercel&logoColor=000000)](https://gitnut.org/)
-[![X](https://img.shields.io/badge/X-@GitNutHub-ffffff?style=for-the-badge&logo=x&logoColor=000000)](https://x.com/GitNutHub)
-[![Community](https://img.shields.io/badge/X%20Community-Join-9945FF?style=for-the-badge&logo=x&logoColor=ffffff)](https://x.com/i/communities/2002937400993923086)
+[![X](https://img.shields.io/badge/X-@GitNutHub-ffffff?style=for-the-badge&logo=x&logoColor=000000)](https://x.com/GitNutXStar)
 
-### $GITNUT: ASVtGrpFmtS94mcjZkp799aedg6BoVwwrZssMNcBpump
+
+### $GITNUTX: 5zPbpS5V1fmrcSH42Wd3b9CpGUJoeAyNk3dMrRtBpump
 
 
 
