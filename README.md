@@ -1,19 +1,16 @@
-<img width="1500" height="500" alt="image" src="https://github.com/user-attachments/assets/4e04b19e-f607-42b6-ba3d-d0d2b51da514" />
 
-# GitNut
+![1500x500](https://github.com/user-attachments/assets/6b8bcd8c-324f-434f-b693-8d8e197c0917)
 
-[![Website](https://img.shields.io/badge/Website-gitnut.org-14F195?style=for-the-badge&logo=vercel&logoColor=000000)](https://gitnut.org/)
-[![X](https://img.shields.io/badge/X-@GitNutXStar-ffffff?style=for-the-badge&logo=x&logoColor=000000)](https://x.com/GitNutXStar)
+# GitSeed
 
-
-### $GITNUTX: 5zPbpS5V1fmrcSH42Wd3b9CpGUJoeAyNk3dMrRtBpump
+[![Website](https://img.shields.io/badge/Website-gitseed.org-14F195?style=for-the-badge&logo=vercel&logoColor=000000)](https://gitseed.org/)
+[![X](https://img.shields.io/badge/X-@GitSeedHub-ffffff?style=for-the-badge&logo=x&logoColor=000000)](https://x.com/GitSeedHub)
 
 
-
-**GitNut** is an open-source pipeline that brings **verifiable software provenance** to Solana.
+**GitSeed** is an open-source pipeline that brings **verifiable software provenance** to Solana.
 
 It does **not** magically “convert Web2 apps into on-chain programs.”  
-Instead, GitNut makes existing software **importable, buildable, hashable, attestable, and verifiable** — then **anchors** those proofs on Solana so anyone can verify:
+Instead, GitSeed makes existing software **importable, buildable, hashable, attestable, and verifiable** — then **anchors** those proofs on Solana so anyone can verify:
 
 - what source code was imported (repo + commit)
 - how it was built (build recipe + environment hints)
@@ -21,17 +18,17 @@ Instead, GitNut makes existing software **importable, buildable, hashable, attes
 - who attested to the result (signer + policy)
 - what was published on-chain (project + version records)
 
-If you want to “Web3-ify” a project, GitNut gives you the foundation:
+If you want to “Web3-ify” a project, GitSeed gives you the foundation:
 **verifiable releases + on-chain registry + reproducible evidence**.
 
 ---
 
-## Why GitNut
+## Why GitSeed
 
 Most open-source software is “trusted” by reputation:
 GitHub stars, maintainers, and CI screenshots.
 
-GitNut replaces that with **cryptographic proof**:
+GitSeed replaces that with **cryptographic proof**:
 
 - Canonical source archive hashing
 - Signed attestations (source/build/release)
@@ -43,16 +40,16 @@ GitNut replaces that with **cryptographic proof**:
 
 ---
 
-## What GitNut Is (and Is Not)
+## What GitSeed Is (and Is Not)
 
-### GitNut is
+### GitSeed is
 - A **registry program** on Solana to store project + version metadata
 - A **worker pipeline** to import → normalize → build → store → attest → anchor
 - An **API** + **web app** to publish and verify releases
 - A **CLI** to run the pipeline and publish from your machine/CI
 - An **SDK** for integrations
 
-### GitNut is not
+### GitSeed is not
 - An automatic translator that turns Web2 server apps into Solana programs
 - A guarantee that arbitrary builds are deterministic (you must opt-in to reproducibility)
 - A replacement for code review or audits
@@ -96,7 +93,7 @@ A version references:
 
 ### Attestation
 A signed statement that binds input → output.
-GitNut supports:
+GitSeed supports:
 - source attestation
 - build attestation
 - release attestation
@@ -198,7 +195,7 @@ anchor deploy --provider.cluster devnet
 
 ## Configuration
 
-GitNut uses environment files:
+GitSeed uses environment files:
 
 - `.env.example` — base template
 - `.env.localnet.example` — localnet defaults
@@ -224,7 +221,7 @@ Key settings:
 
 ## Pipeline Overview
 
-GitNut processes a release in stages:
+GitSeed processes a release in stages:
 
 1. **Import**
    - Clone repo / fetch tarball
@@ -258,7 +255,7 @@ GitNut processes a release in stages:
 
 ## Storage Backends
 
-GitNut supports pluggable storage:
+GitSeed supports pluggable storage:
 
 - **Local** (dev/testing)
 - **S3-compatible** (AWS S3, MinIO, etc.)
@@ -274,7 +271,7 @@ To change storage, set:
 
 ## Security Notes
 
-GitNut touches sensitive areas (build execution, signing, on-chain publishing).
+GitSeed touches sensitive areas (build execution, signing, on-chain publishing).
 
 Key rules:
 
@@ -376,7 +373,7 @@ If you publish third-party code through GitNut, you are responsible for complyin
 
 ## Disclaimer
 
-GitNut is experimental software.  
+GitSeed is experimental software.  
 Use at your own risk. No warranty. No promise of financial return.
 
 See `DISCLAIMER.md`
