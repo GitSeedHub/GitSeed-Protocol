@@ -1,4 +1,4 @@
-# GitNut Deployment Guide
+# GitSeed Deployment Guide
 
 This document explains how to deploy GitNut from zero to a working system:
 
@@ -6,7 +6,7 @@ This document explains how to deploy GitNut from zero to a working system:
 - Devnet deployment
 - Production-style deployment (Docker Compose / Kubernetes)
 
-GitNut is a multi-service system:
+GitSeed is a multi-service system:
 
 - programs/gitnut-registry (Solana Anchor program)
 - apps/api (REST API)
