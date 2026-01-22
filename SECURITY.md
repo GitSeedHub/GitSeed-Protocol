@@ -1,6 +1,6 @@
 # Security Policy
 
-GitNut is an open-source system that anchors verifiable software metadata on Solana and provides a pipeline for importing, normalizing, building, storing, and attesting to source artifacts.
+GitSeed is an open-source system that anchors verifiable software metadata on Solana and provides a pipeline for importing, normalizing, building, storing, and attesting to source artifacts.
 
 This document explains how to report security issues, what is in scope, and how we handle disclosures.
 
@@ -8,7 +8,7 @@ This document explains how to report security issues, what is in scope, and how 
 
 ## Supported Versions
 
-GitNut is under active development. We classify releases as follows:
+GitSeed is under active development. We classify releases as follows:
 
 - **Stable**: tagged releases (e.g. `v1.2.3`) on the default branch.
 - **Pre-release**: release candidates (`-rc.*`), betas, and alphas.
@@ -104,7 +104,7 @@ Timelines may vary based on complexity and availability, but we will keep you up
 
 ## Security Model (High-Level)
 
-GitNut is designed around these principles:
+GitSeed is designed around these principles:
 
 1. **Verifiability over trust**  
    We anchor hashes, manifests, and attestations on-chain so anyone can verify provenance.
@@ -158,5 +158,5 @@ If you add additional security scripts under `scripts/security`, run:
 
 ## Security Contacts
 
-- `security@gitnut.org` (replace)
+- `security@GitSeed.org` (replace)
 - GitHub Security Advisories: preferred
