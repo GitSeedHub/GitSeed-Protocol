@@ -6,7 +6,7 @@
 [![Website](https://img.shields.io/badge/Website-gitseed.org-14F195?style=for-the-badge&logo=vercel&logoColor=000000)](https://gitseed.org/)
 [![X](https://img.shields.io/badge/X-@GitSeedHub-ffffff?style=for-the-badge&logo=x&logoColor=000000)](https://x.com/GitSeedHub)
 
-CQt17HP8hMPWZUKjKt2bHuXySvDhtVQrY3WjS7sDpump
+A93ojnVNdYkqQtQZB5sLNARrbLxL34Vd4CWgdDcEpump
 
 
 **GitSeed** is an open-source pipeline that brings **verifiable software provenance** to Solana.
