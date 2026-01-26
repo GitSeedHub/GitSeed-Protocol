@@ -1,6 +1,6 @@
 # GitWhale Deployment Guide
 
-This document explains how to deploy GitWhale from zero to a working system:
+This document explains how to deploy GitWhale from zero to a working system: 
 
 - Local development (localnet)
 - Devnet deployment
