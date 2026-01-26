@@ -1,6 +1,6 @@
 # Security Policy
 
-GitSeed is an open-source system that anchors verifiable software metadata on Solana and provides a pipeline for importing, normalizing, building, storing, and attesting to source artifacts.
+GitWhale is an open-source system that anchors verifiable software metadata on Solana and provides a pipeline for importing, normalizing, building, storing, and attesting to source artifacts.
 
 This document explains how to report security issues, what is in scope, and how we handle disclosures.
 
@@ -8,7 +8,7 @@ This document explains how to report security issues, what is in scope, and how 
 
 ## Supported Versions
 
-GitSeed is under active development. We classify releases as follows:
+GitWhale is under active development. We classify releases as follows:
 
 - **Stable**: tagged releases (e.g. `v1.2.3`) on the default branch.
 - **Pre-release**: release candidates (`-rc.*`), betas, and alphas.
@@ -30,7 +30,7 @@ Please **do not** open a public GitHub issue for security vulnerabilities.
 Instead, report privately using one of the following:
 
 1. **GitHub Security Advisories** (preferred): use the “Report a vulnerability” button in the repo.
-2. Email: `security@gitnut.org` (replace with your actual security mailbox).
+2. Email: `security@GitWhale.one` (replace with your actual security mailbox).
 
 Include:
 
@@ -69,7 +69,7 @@ Timelines may vary based on complexity and availability, but we will keep you up
 ### In Scope
 
 **On-chain program**
-- `programs/gitnut-registry` and related IDL/tests
+- `programs/GitWhale-registry` and related IDL/tests
 
 **Core services**
 - `apps/api` (auth, project/release endpoints, webhooks)
@@ -104,7 +104,7 @@ Timelines may vary based on complexity and availability, but we will keep you up
 
 ## Security Model (High-Level)
 
-GitSeed is designed around these principles:
+GitWhale is designed around these principles:
 
 1. **Verifiability over trust**  
    We anchor hashes, manifests, and attestations on-chain so anyone can verify provenance.
@@ -158,5 +158,5 @@ If you add additional security scripts under `scripts/security`, run:
 
 ## Security Contacts
 
-- `security@GitSeed.org` (replace)
+- `security@GitWhale.one` (replace)
 - GitHub Security Advisories: preferred
