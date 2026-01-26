@@ -3,6 +3,8 @@
 [![Website](https://img.shields.io/badge/Website-gitwhale.one-14F195?style=for-the-badge&logo=vercel&logoColor=000000)](https://gitwhale.one/)
 [![X](https://img.shields.io/badge/X-@GitWhaleLab-ffffff?style=for-the-badge&logo=x&logoColor=000000)](https://x.com/GitWhaleLab)
 
+6pWNBQuEqEdhkSY3XcM49jdJDSSitDkcppnTSFQUpump
+
 **GitWhale** is an open-source pipeline that brings **verifiable software provenance** to Solana.
 
 It does **not** magically “convert Web2 apps into on-chain programs.”  
